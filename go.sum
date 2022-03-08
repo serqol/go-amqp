@@ -1,0 +1,4 @@
+github.com/serqol/go-pool v0.0.0-20220308145503-f6b125452f87 h1:FZpDGIj/9Mh5fVUlJTpDmO/jalU6ZyYDY8dF99gwg2I=
+github.com/serqol/go-pool v0.0.0-20220308145503-f6b125452f87/go.mod h1:I6AQY18+TIgx8UfWRJhW+Z9NsrLf0ISwyXyyljPGjC0=
+github.com/streadway/amqp v1.0.0 h1:kuuDrUJFZL1QYL9hUNuCxNObNzB0bV/ZG5jV3RWAQgo=
+github.com/streadway/amqp v1.0.0/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
