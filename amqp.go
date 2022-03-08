@@ -3,12 +3,18 @@ package amqp
 import (
 	"fmt"
 	"log"
+	"strconv"
+	"sync"
 	"sync/atomic"
 	"time"
 
 	connection "github.com/serqol/go-pool"
+	"github.com/serqol/go-utils"
 	"github.com/streadway/amqp"
 )
+
+var once sync.Once
+var defaultConnection *connection.Connector
 
 type Amqp struct {
 	connection         *amqp.Connection
@@ -53,6 +59,29 @@ func GetConnector(configuration *Configuration, minActive uint8, maxActive uint1
 		maxActive,
 		maxIdle,
 	)
+}
+
+func GetDefaultConnector() *connection.Connector {
+	once.Do(func() {
+		minActive, _ := strconv.Atoi(utils.GetEnv("AMQP_MIN_ACTIVE", "40").(string))
+		maxActive, _ := strconv.Atoi(utils.GetEnv("AMQP_MAX_ACTIVE", "4000").(string))
+		maxIdle, _ := strconv.Atoi(utils.GetEnv("AMQP_MAX_IDLE", "2000").(string))
+		durable, _ := strconv.ParseBool(utils.GetEnv("AMQP_DURABLE", "1").(string))
+		confirm, _ := strconv.ParseBool(utils.GetEnv("AMQP_CONFIRM", "1").(string))
+		configuration := GetConfiguration(
+			utils.GetEnv("AMQP_HOST", "rabbit").(string),
+			utils.GetEnv("AMQP_PORT", "5672").(string),
+			utils.GetEnv("AMQP_USER", "guest").(string),
+			utils.GetEnv("AMQP_PASSWORD", "guest").(string),
+			utils.GetEnv("AMQP_EXCHANGE", "graylog").(string),
+			utils.GetEnv("AMQP_EXCHANGE_TYPE", "direct").(string),
+			utils.GetEnv("AMQP_QUEUE", "graylog").(string),
+			durable,
+			confirm,
+		)
+		defaultConnection = GetConnector(configuration, uint8(minActive), uint16(maxActive), uint16(maxIdle))
+	})
+	return defaultConnection
 }
 
 func connectorFunction(configuration *Configuration) func() (interface{}, error) {

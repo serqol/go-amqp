@@ -1,4 +1,8 @@
+github.com/joho/godotenv v1.4.0 h1:3l4+N6zfMWnkbPEXKng2o2/MR5mSwTrBih4ZEkkz1lg=
+github.com/joho/godotenv v1.4.0/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
 github.com/serqol/go-pool v0.0.0-20220308145503-f6b125452f87 h1:FZpDGIj/9Mh5fVUlJTpDmO/jalU6ZyYDY8dF99gwg2I=
 github.com/serqol/go-pool v0.0.0-20220308145503-f6b125452f87/go.mod h1:I6AQY18+TIgx8UfWRJhW+Z9NsrLf0ISwyXyyljPGjC0=
+github.com/serqol/go-utils v0.0.0-20220308153422-216e7f0d8365 h1:clYUWoIRaLrne7vGzUA0xZ6tVWa1r1tf4SVDjBT+Mao=
+github.com/serqol/go-utils v0.0.0-20220308153422-216e7f0d8365/go.mod h1:NC2tgUIQYMrMTbLyoHc3Chr5whT1qY77dOU4CSRrbrE=
 github.com/streadway/amqp v1.0.0 h1:kuuDrUJFZL1QYL9hUNuCxNObNzB0bV/ZG5jV3RWAQgo=
 github.com/streadway/amqp v1.0.0/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
